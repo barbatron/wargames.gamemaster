@@ -1,0 +1,4 @@
+export const STATE_CONNECTING = 'CONNECTING';
+export const STATE_GAME_DIRECTORY = 'GAME_DIRECTORY';
+export const STATE_IN_GAME = 'GAME';
+
