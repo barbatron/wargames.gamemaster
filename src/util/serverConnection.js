@@ -2,14 +2,19 @@ import './ws.messaging';
 import {install} from "./ws.messaging";
 import _ from 'lodash';
 
+const messageTypes = {
+  GAMES_LIST: 'admin.games-list',
+  ENTER_GAME: 'admin.enter-game'
+};
+
 let ws;
 
 const handlers = {
-  'games-list': (client, payload) => {
+  [messageTypes.GAMES_LIST]: (client, payload) => {
     console.log('Got games list', payload);
     debugger
   },
-  'enter-game': (client, payload) => {
+  [messageTypes.ENTER_GAME]: (client, payload) => {
     console.log('Entering game', payload);
     debugger
   }
@@ -26,6 +31,5 @@ const onOpened = (ws, ev) => {
 export const connect = url => {
   ws = new WebSocket(url);
   ws.onopen = _.partial(onOpened, ws);
-  install(ws, handlers, 'admin');
 };
 
