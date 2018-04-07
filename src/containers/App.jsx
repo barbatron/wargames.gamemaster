@@ -9,7 +9,7 @@ class App extends Component {
 
   render() {
     const {isFetchingGames, games} = this.props;
-    const gameItems = (games || []).map(game => (<li>{game.name}</li>));
+    const gameItems = (games || []).map(game => (<li key={game.id}>{game.name}</li>));
     return (
       <div>
         <h4>isFetching?</h4>
