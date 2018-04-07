@@ -1,29 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import registerServiceWorker from './registerServiceWorker';
-import {STATE_CONNECTING} from "./gameStates";
-import {createStore} from 'redux';
+import React from 'react'
+import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+import configureStore from './store/configureStore'
+import rootSaga from './sagas'
 
-import Root from './components/Root';
+import App from './containers/App.jsx';
 
-import {reducers} from './reducers/index';
+const store = configureStore();
+store.runSaga(rootSaga);
 
-const initialState = {
-  gameState: STATE_CONNECTING,
-  gamesList: {
-    isFetching: false,
-    items: []
-  },
-  gameSelection: {
-    map: [],
-    players: []
-  }
-};
+render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
+);
 
-const store = createStore(reducers, initialState);
-
-ReactDOM.render(
-  <Root store={store}/>,
-  document.getElementById('root'));
-registerServiceWorker();

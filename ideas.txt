@@ -1,0 +1,7 @@
+STATES
+
+In game
+- Right: Player list
+- Game info
+- Map
+
