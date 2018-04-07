@@ -24,7 +24,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const {isFetchingGames, games} = state;
+  const {isFetchingGames, games} = state.gamesList;
   return {
     isFetchingGames,
     games
