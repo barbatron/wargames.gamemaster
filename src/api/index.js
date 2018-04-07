@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000';
 
-const pathToUrl = path => `${BASE_URL}${path}`
+const pathToUrl = path => `${BASE_URL}${path}`;
 
 export const fetchGames = () => {
-  return axios.get(pathToUrl('/games'))
+  return axios.get(pathToUrl('/games')).then(resp => resp.data);
 };
 
 export const fetchGame = id => {
