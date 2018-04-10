@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {requestGames} from '../actions/game';
 
-class App extends Component {
+class Games extends Component {
   componentDidMount() {
     this.props.dispatch(requestGames());
   }
@@ -31,4 +31,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Games);

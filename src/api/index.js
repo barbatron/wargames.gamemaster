@@ -4,6 +4,10 @@ const BASE_URL = 'http://localhost:3000';
 
 const pathToUrl = path => `${BASE_URL}${path}`;
 
+export const fetchCurrentUser = () => {
+  return axios.get(pathToUrl('/users/1')).then(resp => resp.data);
+};
+
 export const fetchGames = () => {
   return axios.get(pathToUrl('/games')).then(resp => resp.data);
 };
@@ -17,6 +21,7 @@ export const createGame = game => {
 };
 
 export default {
+  fetchCurrentUser,
   fetchGames,
   fetchGame,
   createGame

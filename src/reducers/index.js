@@ -1,5 +1,7 @@
 import {combineReducers} from 'redux'
 import {RECEIVE_GAMES, REQUEST_GAMES} from '../actions/game';
+import {RECEIVE_CURRENT_USER, REQUEST_CURRENT_USER} from '../actions/user';
+import {routerReducer} from 'react-router-redux'
 
 function gamesList(state = {
   isFetchingGames: false,
@@ -15,8 +17,24 @@ function gamesList(state = {
   }
 }
 
+function user(state = {
+  isFetchingUser: false,
+  currentUser: null
+}, action) {
+  switch (action.type) {
+    case REQUEST_CURRENT_USER:
+      return {...state, isFetchingUser: true};
+    case RECEIVE_CURRENT_USER:
+      return {...state, isFetchingUser: false, current: action.user};
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  gamesList
+  routing: routerReducer,
+  gamesList,
+  user
 });
 
 export default rootReducer;
